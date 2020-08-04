@@ -2,7 +2,7 @@
 
 Reconstruir los módulos de NodeJS
 ```
-npm instal
+npm install
 ```
 
 Generar el DIST
