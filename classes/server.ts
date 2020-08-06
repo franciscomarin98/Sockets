@@ -11,12 +11,7 @@ export default class Server {
   public io: socketIO.Server;
   private httpServer: http.Server;
 
-  private escucharSockets() {
-    console.log('Escuchando conexiones - sockets');
-    this.io.on('connection',cliente => {
-      console.log('Nuevo cliente conectado');
-    })
-  }
+
 
   private constructor() {
     this.app = express();
@@ -26,13 +21,20 @@ export default class Server {
     this.escucharSockets();
   }
 
+  private escucharSockets() {
+    console.log('Escuchando conexiones - sockets');
+    this.io.on('connection',cliente => {
+      console.log('Nuevo cliente conectado');
+    })
+  }
+
   public static get instance() {
     return this._instance || (this._instance = new this());
   } 
 
   startServer() {
-    this.app.listen(this.port, () => {
-      console.log(`Servidor corriendo en el ${this.port}`);
+    this.httpServer.listen(this.port, () => {
+      console.log(`Servidor corriendo en el puerto ${this.port}`);
     });
   }
 }
