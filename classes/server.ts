@@ -2,6 +2,7 @@ import http from "http";
 import express from "express";
 import socketIO from "socket.io";
 import { SERVER_PORT } from "../global/enviroment";
+import * as socket_config from '../sockets/sockets.configuration';
 
 export default class Server {
 
@@ -24,7 +25,13 @@ export default class Server {
   private escucharSockets() {
     console.log('Escuchando conexiones - sockets');
     this.io.on('connection',cliente => {
-      console.log('Nuevo cliente conectado');
+      console.log('Usuario en linea');
+
+      //Aqui se escuchan todos los mensajes
+      socket_config.mensaje(cliente);
+
+      //Aqui se escuchan los cambios de estado, es decir si el usuario se desconecta
+      socket_config.desconectado(cliente);
     })
   }
 
