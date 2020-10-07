@@ -35,7 +35,7 @@ export default class Server {
       console.log('Usuario en linea');
 
       //Aqui se escuchan todos los mensajes
-      socket_config.mensaje(cliente);
+      socket_config.mensaje(cliente,this.io);
 
       //Aqui se escuchan los cambios de estado, es decir si el usuario se desconecta
       socket_config.desconectado(cliente);
