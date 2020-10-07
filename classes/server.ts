@@ -39,6 +39,7 @@ export default class Server {
     return this._instance || (this._instance = new this());
   } 
 
+  //Funcion para iniciar el servidor
   startServer() {
     this.httpServer.listen(this.port, () => {
       console.log(`Servidor corriendo en el puerto ${this.port}`);

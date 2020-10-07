@@ -9,10 +9,10 @@ const server = Server.instance;
 server.app.use(bodyParser.urlencoded({ extended: true }));
 server.app.use(bodyParser.json());
 
-//CORS
+//Habilitacion del CORS
 server.app.use(cors({ origin: true, credentials: true }));
 
-//Server URL
+//Rutas de servicios
 server.app.use("/", router);
 
 server.startServer();
