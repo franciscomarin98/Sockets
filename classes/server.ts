@@ -22,6 +22,13 @@ export default class Server {
     this.escucharSockets();
   }
 
+  //Funcion para iniciar el servidor
+  startServer() {
+    this.httpServer.listen(this.port, () => {
+      console.log(`Servidor corriendo en el puerto ${this.port}`);
+    });
+  }
+
   private escucharSockets() {
     console.log('Escuchando conexiones - sockets');
     this.io.on('connection',cliente => {
@@ -35,14 +42,10 @@ export default class Server {
     })
   }
 
+  //Patron singlenton
   public static get instance() {
     return this._instance || (this._instance = new this());
   } 
 
-  //Funcion para iniciar el servidor
-  startServer() {
-    this.httpServer.listen(this.port, () => {
-      console.log(`Servidor corriendo en el puerto ${this.port}`);
-    });
-  }
+
 }
